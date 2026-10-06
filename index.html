@@ -6,12 +6,14 @@
     <title>HR Admin - ဝန်ထမ်းမှတ်ပုံတင်စနစ်</title>
     <style>
         :root {
-            --primary-color: #4f46e5;
-            --primary-hover: #4338ca;
-            --bg-color: #f8fafc;
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
-            --text-color: #1e293b;
+            --text-color: #0f172a;
+            --label-color: #334155;
             --border-color: #cbd5e1;
+            --input-bg: #f8fafc;
         }
 
         body {
@@ -19,27 +21,30 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 30px 15px;
         }
 
         .form-container {
-            max-width: 700px;
+            max-width: 720px;
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 12px;
-            margin: 20px auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
 
         h2 {
             text-align: center;
             color: var(--primary-color);
-            margin-bottom: 30px;
-            font-size: 24px;
+            margin-bottom: 35px;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         label {
@@ -47,6 +52,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 14px;
+            color: var(--label-color);
         }
 
         input[type="text"],
@@ -54,40 +60,44 @@
         select,
         textarea {
             width: 100%;
-            padding: 12px;
+            padding: 12px 16px;
             box-sizing: border-box;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            transition: all 0.25s ease;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
         input[readonly] {
-            background-color: #f1f5f9;
+            background-color: #e2e8f0;
             color: #64748b;
+            cursor: not-allowed;
         }
 
         input[type="file"] {
-            padding: 10px;
-            background: #f8fafc;
+            padding: 12px;
+            background: var(--input-bg);
             border: 1px dashed var(--border-color);
-            border-radius: 6px;
+            border-radius: 8px;
             width: 100%;
             box-sizing: border-box;
             cursor: pointer;
+            font-size: 13px;
+            color: #475569;
+            transition: border-color 0.2s;
         }
 
-        .error-msg {
-            color: #ef4444;
-            font-size: 12px;
-            margin-top: 5px;
-            display: block;
+        input[type="file"]:hover {
+            border-color: var(--primary-color);
         }
 
         button {
@@ -95,29 +105,34 @@
             color: white;
             padding: 14px 20px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
             font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            margin-top: 10px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         button:hover {
             background-color: var(--primary-hover);
         }
 
+        button:active {
+            transform: scale(0.99);
+        }
+
         .row {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
         .col {
             flex: 1;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             .row {
                 flex-direction: column;
                 gap: 0;
@@ -136,13 +151,12 @@
         
         <div class="row">
             <div class="form-group col">
-                <label>Employee ID </label>
+                <label>Employee ID</label>
                 <input type="text" id="employeeId" maxlength="6" placeholder="ဥပမာ- 123456" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                <span class="error-msg" id="errId">ဂဏန်း (၆) လုံးသာ ရိုက်ထည့်ပါ။</span>
             </div>
 
             <div class="form-group col">
-                <label>Role (ရာထူး)</label>
+                <label>Role</label>
                 <select id="role" required>
                     <option value="">ရာထူး ရွေးချယ်ပါ</option>
                     <option value="leader">Leader</option>
@@ -153,68 +167,68 @@
         </div>
 
         <div class="form-group">
-            <label>Full Name (English စာသားသီးသန့်)</label>
+            <label>Full Name</label>
             <input type="text" id="fullName" placeholder="U Aung Aung" required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
         </div>
 
         <div class="form-group">
-            <label>Father's Name (English စာသားသီးသန့်)</label>
+            <label>Father's Name</label>
             <input type="text" id="fatherName" placeholder="U Ba" required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
         </div>
 
         <div class="row">
             <div class="form-group col">
-                <label>Date of Birth (မွေးသက္ကရာဇ်)</label>
+                <label>Date of Birth</label>
                 <input type="date" id="dob" required onchange="calculateAge()">
             </div>
 
             <div class="form-group col">
-                <label>Age (အသက် - အလိုအလျောက်ပေါ်မည်)</label>
-                <input type="text" id="age" readonly placeholder="အသက်">
+                <label>Age</label>
+                <input type="text" id="age" readonly placeholder="အသက် (အလိုအလျောက်ပေါ်မည်)">
             </div>
         </div>
 
         <div class="form-group">
-            <label>Address (နေရပ်လိပ်စာ)</label>
+            <label>Address</label>
             <textarea id="address" rows="2" placeholder="လိပ်စာအပြည့်အစုံ ရိုက်ထည့်ရန်" required></textarea>
         </div>
 
         <div class="row">
             <div class="form-group col">
-                <label>NRC Number (မှတ်ပုံတင်အမှတ်)</label>
+                <label>NRC Number</label>
                 <input type="text" id="nrcNumber" placeholder="12/MaGaTa(N)123456" required>
             </div>
 
             <div class="form-group col">
-                <label>Phone Number (ဖုန်းနံပါတ်)</label>
+                <label>Phone Number</label>
                 <input type="text" id="phoneNumber" value="09-" maxlength="11" required oninput="validatePhone(this)">
             </div>
         </div>
 
         <div class="form-group">
-            <label>Joining Date (အလုပ်စတင်ဝင်သည့်ရက်)</label>
+            <label>Joining Date</label>
             <input type="date" id="joiningDate" readonly>
         </div>
 
         <div class="form-group">
-            <label>Employee Photo (ယူနီဖောင်းဝတ်ဆင်ထားသော ပုံ)</label>
+            <label>Employee Photo</label>
             <input type="file" id="photoFile" accept="image/*" required>
         </div>
 
         <div class="row">
             <div class="form-group col">
-                <label>NRC Front Photo (ရှေ့မျက်နှာပြင်)</label>
+                <label>NRC Front Photo</label>
                 <input type="file" id="nrcFrontFile" accept="image/*" required>
             </div>
 
             <div class="form-group col">
-                <label>NRC Back Photo (နောက်ကျောဘက်)</label>
+                <label>NRC Back Photo</label>
                 <input type="file" id="nrcBackFile" accept="image/*" required>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Remarks (မှတ်ချက်)</label>
+            <label>Remarks</label>
             <textarea id="remarks" rows="2" placeholder="ထပ်မံဖြည့်စွက်ရန် ရှိပါက ရိုက်ထည့်ပါ"></textarea>
         </div>
 
@@ -295,7 +309,7 @@
             remarks: document.getElementById('remarks').value
         };
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAXemFmCr9ubS_RAT5-qtuVre6G-iyppRZpSyi6Ygi9Zr6Z9cPGC358Wp2PTp3EA/exec"; // Apps Script Deploy URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxU6RiE8NtTLdfdhLk2OPiXA9sM-Y7onJPuv0aw71P80r32p04rZMfknRfL-MEPFao/exec"; // Apps Script Deploy URL
 
         alert("ဒေတာများကို ပို့ဆောင်နေပါပြီ...");
 
