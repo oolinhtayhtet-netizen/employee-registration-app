@@ -201,7 +201,7 @@
 
             <div class="form-group col">
                 <label>Phone Number</label>
-                <input type="text" id="phoneNumber" value="09-" maxlength="12" required oninput="validatePhone(this)">
+                <input type="text" id="phoneNumber" value="09-" maxlength="11" required oninput="validatePhone(this)">
             </div>
         </div>
 
@@ -257,7 +257,7 @@
             input.value = "09-";
         }
         let digits = input.value.substring(3).replace(/[^0-9]/g, '');
-        if (digits.length > 9) {
+        if (digits.length > 10) {
             digits = digits.substring(0, 9);
         }
         input.value = "09-" + digits;
