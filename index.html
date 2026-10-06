@@ -258,7 +258,7 @@
         }
         let digits = input.value.substring(3).replace(/[^0-9]/g, '');
         if (digits.length > 10) {
-            digits = digits.substring(0, 9);
+            digits = digits.substring(0, 10);
         }
         input.value = "09-" + digits;
     }
