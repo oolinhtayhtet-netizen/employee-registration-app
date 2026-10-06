@@ -167,7 +167,7 @@
             remarks: document.getElementById('remarks').value
         };
 
-        const SCRIPT_URL = "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE"; // Apps Script Deploy URL ထည့်ရန်
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxU6RiE8NtTLdfdhLk2OPiXA9sM-Y7onJPuv0aw71P80r32p04rZMfknRfL-MEPFao/exec"; // Apps Script Deploy URL ထည့်ရန်
 
         alert("ဒေတာများကို ပို့ဆောင်နေပါပြီ...");
 
